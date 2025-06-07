@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2exhd7r8041q"]
+
+[ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="1_drl1m"]
+[ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="3_cciy0"]
+[ext_resource type="Texture2D" uid="uid://ckswognketwcg" path="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png" id="3_ggchx"]
+[ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="4_n3fa7"]
+[ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_oxwvi"]
+[ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="5_4abq8"]
+[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="5_8ckay"]
+[ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="7_27nou"]
+
+[sub_resource type="GDScript" id="GDScript_bwulf"]
+script/source = "extends CharacterBody2D
+
+# TODO
+# Global Player Scene (Victor)
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cciy0")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n3fa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4abq8")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
+radius = 13.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = SubResource("GDScript_bwulf")
+
+[node name="Sprites" type="Node2D" parent="."]
+script = ExtResource("1_drl1m")
+
+[node name="Shirt" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("5_8ckay")
+
+[node name="Skin" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_ggchx")
+
+[node name="Hat" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("4_oxwvi")
+
+[node name="Facial Hair" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("7_27nou")
+
+[node name="Legs" type="AnimatedSprite2D" parent="Sprites"]
+sprite_frames = SubResource("SpriteFrames_0ql60")
+animation = &"Idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_aij12")

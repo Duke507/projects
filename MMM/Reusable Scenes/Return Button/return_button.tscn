@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://du6eyxexnodyu"]
+
+[ext_resource type="Script" path="res://Reusable Scenes/Return Button/return_button.gd" id="1_8mne0"]
+[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_t0xoh"]
+
+[node name="Return Button" type="Button"]
+offset_left = 1004.0
+offset_top = 6.0
+offset_right = 1145.0
+offset_bottom = 37.0
+theme = ExtResource("1_t0xoh")
+toggle_mode = true
+text = "Main Menu"
+script = ExtResource("1_8mne0")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

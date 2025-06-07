@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://8xushpv5otf2"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 1/gamemode_1.gd" id="1_1dpkc"]
+[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_b5gcd"]
+[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="2_4ifvl"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/BeforeStart.gd" id="3_xxdqj"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/DeathScreen.gd" id="4_a2mkr"]
+[ext_resource type="Texture2D" uid="uid://cih6uj1h4351u" path="res://Components/Gamemode 1/Gamemode1 Sprites/TestRamp.png" id="5_5esu5"]
+[ext_resource type="Texture2D" uid="uid://8htax3pkoq4r" path="res://Reusable Scenes/PixelArtUI.png" id="5_17sk6"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Camera.gd" id="11_yis6w"]
+[ext_resource type="Script" path="res://Components/Gamemode 1/Wave.gd" id="12_2hd1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ax17"]
+atlas = ExtResource("5_17sk6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rtn6"]
+atlas = ExtResource("5_17sk6")
+region = Rect2(32, 0, 32, 32)
+
+[node name="Gamemode 1" type="Node2D"]
+script = ExtResource("1_1dpkc")
+
+[node name="HomePoint" type="Node2D" parent="."]
+position = Vector2(58, -338)
+
+[node name="Wave" type="Node2D" parent="."]
+position = Vector2(836, 450)
+script = ExtResource("12_2hd1j")
+
+[node name="Ramp" type="StaticBody2D" parent="."]
+position = Vector2(836, -418)
+scale = Vector2(3, 3)
+
+[node name="RampImage" type="Sprite2D" parent="Ramp"]
+position = Vector2(-278, 35)
+texture = ExtResource("5_5esu5")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp"]
+polygon = PackedVector2Array(-278, 355, -278, 36, -211, 36, -174, 249, -170, 260, -165, 269, -162, 274, -155, 282, -148, 288, -137, 296, -125, 302, -115, 305, -106, 307, -99, 308, -83, 308, -72, 306, -62, 303, -53, 299, -44, 294, -30, 283, 0, 283, 0, 355)
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("wave")]
+position = Vector2(232, -400)
+offset = Vector2(200, -150)
+zoom = Vector2(1.2, 1.2)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 100.0
+script = ExtResource("11_yis6w")
+wave = NodePath("../Wave")
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_4ifvl")
+
+[node name="Debug" type="Control" parent="UI Layer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI Layer/Control/Debug"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 135.0
+offset_bottom = 34.0
+text = "Gamemode 1"
+
+[node name="Return Button" parent="UI Layer/Control/Debug" instance=ExtResource("1_b5gcd")]
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 4.0
+offset_right = 1147.0
+offset_bottom = 35.0
+
+[node name="BeforeStart" type="Control" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 408.0
+offset_top = 171.0
+offset_right = 448.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_xxdqj")
+
+[node name="Amplitude" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 52.0
+offset_right = 250.0
+offset_bottom = 90.0
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 1.0
+prefix = "Amplitude:"
+
+[node name="Frequency" type="SpinBox" parent="UI Layer/Control/BeforeStart"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 90.0
+offset_right = 274.0
+offset_bottom = 124.0
+scale = Vector2(1.00166, 1)
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 1.0
+prefix = "Frequency:"
+
+[node name="Play" type="TextureButton" parent="UI Layer/Control/BeforeStart"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 124.0
+offset_right = 157.0
+offset_bottom = 156.0
+scale = Vector2(2.10483, 2.10483)
+texture_normal = SubResource("AtlasTexture_3ax17")
+
+[node name="DeathScreen" type="Control" parent="UI Layer/Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 561.0
+offset_top = 326.0
+offset_right = 601.0
+offset_bottom = 366.0
+script = ExtResource("4_a2mkr")
+
+[node name="Restart" type="TextureButton" parent="UI Layer/Control/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 7.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.32, 2.32)
+texture_normal = SubResource("AtlasTexture_3rtn6")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 303.0
+offset_top = 300.0
+offset_right = 343.0
+offset_bottom = 340.0
+
+[connection signal="beginGame" from="." to="Wave" method="_on_begin"]
+[connection signal="beginGame" from="." to="Camera" method="_game_begin"]
+[connection signal="beginGame" from="." to="UI Layer/Control/BeforeStart" method="_on_game_begin"]
+[connection signal="gameLost" from="." to="UI Layer/Control/DeathScreen" method="_on_death"]
+[connection signal="preGame" from="." to="." method="_on_pre_game"]
+[connection signal="preGame" from="." to="Camera" method="_pregame_begin"]
+[connection signal="preGame" from="." to="UI Layer/Control/BeforeStart" method="_pregame_selection"]
+[connection signal="preGame" from="." to="UI Layer/Control/DeathScreen" method="_on_pregame_start"]
+[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Amplitude" to="Wave" method="_amplitude_changed"]
+[connection signal="value_changed" from="UI Layer/Control/BeforeStart/Frequency" to="Wave" method="_frequency_changed"]
+[connection signal="button_up" from="UI Layer/Control/BeforeStart/Play" to="." method="begin_game"]
+[connection signal="button_up" from="UI Layer/Control/DeathScreen/Restart" to="." method="_on_restart"]

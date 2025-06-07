@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqay6i8p18pa6"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 3/lighting.gd" id="1_gndqf"]
+[ext_resource type="Texture2D" uid="uid://c7ltnf83gcidi" path="res://Components/Gamemode 3/godotImages/lightingspell.png" id="2_y13kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdljx"]
+size = Vector2(181, 43.5)
+
+[sub_resource type="Animation" id="Animation_6ij7l"]
+resource_name = "lightingspell"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 2, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_nhtq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gul78"]
+_data = {
+"RESET": SubResource("Animation_nhtq0"),
+"lightingspell": SubResource("Animation_6ij7l")
+}
+
+[node name="lighting" type="Area2D"]
+position = Vector2(231, 313)
+script = ExtResource("1_gndqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(85.3333, 1.625)
+rotation = 1.5708
+scale = Vector2(2.60156, 5.64583)
+texture = ExtResource("2_y13kr")
+hframes = 2
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(86.4583, -2.20833)
+shape = SubResource("RectangleShape2D_rdljx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gul78")
+}
+autoplay = "lightingspell"

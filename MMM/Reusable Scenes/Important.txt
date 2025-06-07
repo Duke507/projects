@@ -1,0 +1,3 @@
+"Reusable Scenes" is for objects that can be used across gamemodes, like the player, or some UI elements.
+
+Keep this filesystem organized. Don't change existing paths, this can break existing code.

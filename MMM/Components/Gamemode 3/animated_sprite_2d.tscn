@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfp7bn2oojiwo"]
+
+[ext_resource type="Texture2D" uid="uid://26l2tebvoxla" path="res://Components/Gamemode 3/godotImages/waterspell.png" id="1_n7q4h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wk4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n7q4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(227, 260)
+scale = Vector2(3.82813, 2.64583)
+sprite_frames = SubResource("SpriteFrames_8wk4f")
+frame_progress = 0.00635024

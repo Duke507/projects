@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310566524629",
+    "project_id": "fir-connorpenn-jakediaz",
+    "storage_bucket": "fir-connorpenn-jakediaz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310566524629:android:b22dc339a20a3660adb45c",
+        "android_client_info": {
+          "package_name": "com.example.firebase_connorpenn_jakediaz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0FcDrQ_gt7IA_XL28E-soWmB_GYFMKyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

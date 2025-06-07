@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=3 uid="uid://uefpmlu6ommb"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 3/gamemode_3.gd" id="1_cjxrw"]
+[ext_resource type="PackedScene" uid="uid://du6eyxexnodyu" path="res://Reusable Scenes/Return Button/return_button.tscn" id="1_p6bw8"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/PlayerScript3.gd" id="2_eates"]
+[ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="2_o8ocu"]
+[ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="4_4cnjm"]
+[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="5_2yydu"]
+[ext_resource type="Texture2D" uid="uid://ckswognketwcg" path="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png" id="6_w8o03"]
+[ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="7_e4c4l"]
+[ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="8_lguju"]
+[ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="9_nn13b"]
+[ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="10_h6bwa"]
+[ext_resource type="PackedScene" uid="uid://4nyr3sr12iuu" path="res://Components/Gamemode 3/triangles.tscn" id="12_sudce"]
+[ext_resource type="Script" path="res://Components/Gamemode 3/AllSpells.gd" id="13_vagmi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lguju")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_nn13b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h6bwa")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aij12"]
+radius = 13.0
+
+[node name="Gamemode 3" type="Node2D"]
+script = ExtResource("1_cjxrw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 108.0
+offset_bottom = 28.0
+text = "Gamemode 3"
+
+[node name="Return Button" parent="." instance=ExtResource("1_p6bw8")]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(526, 257)
+motion_mode = 1
+script = ExtResource("2_eates")
+
+[node name="Sprites" type="Node2D" parent="Player"]
+script = ExtResource("2_o8ocu")
+
+[node name="Skin" type="Sprite2D" parent="Player/Sprites"]
+texture = ExtResource("6_w8o03")
+
+[node name="Hat" type="Sprite2D" parent="Player/Sprites"]
+texture = ExtResource("4_4cnjm")
+
+[node name="Shirt" type="Sprite2D" parent="Player/Sprites"]
+texture = ExtResource("5_2yydu")
+
+[node name="Facial Hair" type="Sprite2D" parent="Player/Sprites"]
+texture = ExtResource("7_e4c4l")
+
+[node name="Legs" type="AnimatedSprite2D" parent="Player/Sprites"]
+sprite_frames = SubResource("SpriteFrames_0ql60")
+animation = &"Idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_aij12")
+
+[node name="SpellTimer1" type="Timer" parent="Player"]
+wait_time = 2.0
+
+[node name="spellposition" type="Node2D" parent="Player"]
+position = Vector2(13, 3)
+
+[node name="Marker2D" type="Marker2D" parent="Player/spellposition"]
+
+[node name="SpellTimer2" type="Timer" parent="Player"]
+
+[node name="SpellTimer3" type="Timer" parent="Player"]
+
+[node name="triangles" parent="." instance=ExtResource("12_sudce")]
+
+[node name="AllSpells" type="Node2D" parent="."]
+script = ExtResource("13_vagmi")
+
+[connection signal="timeout" from="Player/SpellTimer1" to="." method="_on_spell_timer_1_timeout"]
+[connection signal="timeout" from="Player/SpellTimer1" to="Player" method="_on_spell_timer_1_timeout"]
+[connection signal="body_on_triangle" from="triangles" to="." method="_on_triangles_body_on_triangle"]

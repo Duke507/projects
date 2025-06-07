@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://4nyr3sr12iuu"]
+
+[ext_resource type="Script" path="res://Components/Gamemode 3/triangles.gd" id="1_1evgh"]
+
+[node name="triangles" type="Polygon2D"]
+position = Vector2(218, 280)
+scale = Vector2(0.663082, 0.773279)
+polygon = PackedVector2Array(656.027, -130.613, 677.141, 161.649, 1004.4, 156.477)
+script = ExtResource("1_1evgh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(766.119, 58.1937)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-63.3407, -139.665)
+scale = Vector2(0.998311, 0.955995)
+polygon = PackedVector2Array(-48.3411, -51.4034, -16.6172, 263.781, 309.685, 258.37)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

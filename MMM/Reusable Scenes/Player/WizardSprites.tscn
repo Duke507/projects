@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://wj5kh3fmtpul"]
+
+[ext_resource type="Script" path="res://Reusable Scenes/Player/Scripts/WizardSprites.gd" id="1_ro3t0"]
+[ext_resource type="Texture2D" uid="uid://d16dmjsa12jrl" path="res://Reusable Scenes/Player/Sprites/Hats/DefaultHat.png" id="3_2vs2a"]
+[ext_resource type="Texture2D" uid="uid://ckswognketwcg" path="res://Reusable Scenes/Player/Sprites/Skin/DefaultSkin.png" id="4_71dgh"]
+[ext_resource type="Texture2D" uid="uid://dyj60e6d7blyx" path="res://Reusable Scenes/Player/Sprites/Shirts/DefaultRobe.png" id="4_pc28a"]
+[ext_resource type="Texture2D" uid="uid://cmdxtytd1w5j3" path="res://Reusable Scenes/Player/Sprites/Facial Hair/DefaultBeard.png" id="6_bso1b"]
+[ext_resource type="Texture2D" uid="uid://benckrpvwuit1" path="res://Reusable Scenes/Player/Sprites/Legs/Legs.png" id="7_iwglh"]
+[ext_resource type="Texture2D" uid="uid://w63ynxuoqsdk" path="res://Reusable Scenes/Player/Sprites/Legs/LegsLeftUp.png" id="8_6infl"]
+[ext_resource type="Texture2D" uid="uid://sg3xf4yhnf1n" path="res://Reusable Scenes/Player/Sprites/Legs/LegsRightUp.png" id="9_qxcun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ql60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iwglh")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6infl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qxcun")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[node name="WizardSprites" type="Node2D"]
+script = ExtResource("1_ro3t0")
+
+[node name="Hat" type="Sprite2D" parent="."]
+texture = ExtResource("3_2vs2a")
+
+[node name="Shirt" type="Sprite2D" parent="."]
+texture = ExtResource("4_pc28a")
+
+[node name="Skin" type="Sprite2D" parent="."]
+texture = ExtResource("4_71dgh")
+
+[node name="Facial Hair" type="Sprite2D" parent="."]
+texture = ExtResource("6_bso1b")
+
+[node name="Legs" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ql60")
+animation = &"Idle"

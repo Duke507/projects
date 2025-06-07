@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://corn6y012o67q"]
+
+[ext_resource type="Script" path="res://Components/Main Menu/main_menu.gd" id="1_jth7i"]
+[ext_resource type="Theme" uid="uid://dwoxpar5s6yce" path="res://Reusable Scenes/BlueTheme.tres" id="1_jwc0v"]
+[ext_resource type="Texture2D" uid="uid://dlx8dvocl6d71" path="res://Components/Main Menu/M.png" id="3_rgrsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2at7"]
+atlas = ExtResource("3_rgrsw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1gu2"]
+atlas = ExtResource("3_rgrsw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsmi0"]
+atlas = ExtResource("3_rgrsw")
+region = Rect2(0, 32, 32, 32)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jwc0v")
+script = ExtResource("1_jth7i")
+
+[node name="MMM" type="Node2D" parent="."]
+position = Vector2(-194, -351)
+scale = Vector2(3.4, 3.4)
+
+[node name="M1" type="Sprite2D" parent="MMM"]
+position = Vector2(22.9412, 51.7647)
+texture = SubResource("AtlasTexture_q2at7")
+
+[node name="M2" type="Sprite2D" parent="MMM"]
+position = Vector2(56, 52)
+texture = SubResource("AtlasTexture_v1gu2")
+
+[node name="M3" type="Sprite2D" parent="MMM"]
+position = Vector2(88.8235, 52.0588)
+texture = SubResource("AtlasTexture_wsmi0")
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -54.0
+offset_right = 68.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(68, 54)
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Button for Gamemode 1" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Gamemode 1"
+
+[node name="Button for Gamemode 2" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Gamemode 2"
+
+[node name="Button for Gamemode 3" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Gamemode 3"
+
+[node name="Button for Gamemode 4" type="Button" parent="CenterContainer/Buttons"]
+visible = false
+layout_mode = 2
+text = "Gamemode 4"
+
+[node name="Button for CC" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Wizard"
+
+[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 1" to="." method="_on_button_for_gamemode_1_button_up"]
+[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 2" to="." method="_on_button_for_gamemode_2_button_up"]
+[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 3" to="." method="_on_button_for_gamemode_3_button_up"]
+[connection signal="button_up" from="CenterContainer/Buttons/Button for Gamemode 4" to="." method="_on_button_for_gamemode_4_button_up"]
+[connection signal="button_up" from="CenterContainer/Buttons/Button for CC" to="." method="_on_button_for_cc_button_up"]

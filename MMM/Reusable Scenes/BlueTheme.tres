@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dwoxpar5s6yce"]
+
+[ext_resource type="FontFile" uid="uid://dltk8r13eljo4" path="res://Reusable Scenes/joystix monospace.otf" id="1_2rfdc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqkrg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vsxe"]
+bg_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
+shadow_size = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1la0o"]
+bg_color = Color(4.42803e-06, 0.450652, 0.702313, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
+expand_margin_left = 2.0
+shadow_size = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjj2x"]
+bg_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1.37173e-06, 0.274379, 0.43831, 1)
+shadow_size = 4
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_2rfdc")
+Button/styles/focus = SubResource("StyleBoxEmpty_bqkrg")
+Button/styles/hover = SubResource("StyleBoxFlat_4vsxe")
+Button/styles/normal = SubResource("StyleBoxFlat_1la0o")
+Button/styles/pressed = SubResource("StyleBoxFlat_qjj2x")
+Label/font_sizes/font_size = 15
+Label/styles/normal = SubResource("StyleBoxFlat_1la0o")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_1la0o")
