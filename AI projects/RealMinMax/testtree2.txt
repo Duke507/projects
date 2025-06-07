@@ -1,0 +1,47 @@
+Script started on 2024-03-09 21:16:36-08:00 [TERM="xterm" TTY="/dev/pts/47" COLUMNS="80" LINES="24"]
+]0;penn016@empress:~/CS471Progs/HW3-RealMinMax[?2004h[penn016@empress HW3-RealMinMax]$ g++ mmbt.cpp mmclient.cpp
+[?2004l]0;penn016@empress:~/CS471Progs/HW3-RealMinMax[?2004h[penn016@empress HW3-RealMinMax]$ ./a.out
+[?2004l ---------------------- 
+ MINMAX client for a binary game tree with MAX at the root. 
+ I assume that the borrom level is flat. 
+ The Operator Path is the state description e.g. LLR 
+Bottom Level is? 2
+
+As a triangular tree is created using DFS,
+ enter scores of leaves as prompted
+Visited: -
+ Visited: -L
+  Visited: -LL
+   Bottom Level: 2 Max
+   Score for this leaf: 1
+  Visited: -LR
+   Bottom Level: 2 Max
+   Score for this leaf: 2
+ Visited: -R
+  Visited: -RL
+   Bottom Level: 2 Max
+   Score for this leaf: 3
+  Visited: -RR
+   Bottom Level: 2 Max
+   Score for this leaf: 4
+Type any key to continue y
+Here is the initial tree shown in DFS...
+Level: 0 - 
+ Level: 1 -L 
+  Level: 2 -LL with value 1
+  Level: 2 -LR with value 2
+ Level: 1 -R 
+  Level: 2 -RL with value 3
+  Level: 2 -RR with value 4
+Type any key to continue y
+MinMax  being done...
+ Level: 1 MIN Path: -L
+ Level: 1 MIN Path: -R
+Level: 0 MAX Path: -
+Root Value is: 3
+You can make a move now to the right
+ ----------------------
+]0;penn016@empress:~/CS471Progs/HW3-RealMinMax[?2004h[penn016@empress HW3-RealMinMax]$ exit
+[?2004lexit
+
+Script done on 2024-03-09 21:17:12-08:00 [COMMAND_EXIT_CODE="0"]

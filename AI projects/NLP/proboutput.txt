@@ -1,0 +1,56 @@
+Script started on 2024-05-04 23:32:07-07:00 [TERM="xterm" TTY="/dev/pts/35" COLUMNS="142" LINES="67"]
+]0;penn016@empress:~/CS471Progs/HW7-NLP[?2004h[penn016@empress HW7-NLP]$ g++ probabnlp.cpp 
+[?2004l]0;penn016@empress:~/CS471Progs/HW7-NLP[?2004h[penn016@empress HW7-NLP]$ ./a.out
+[?2004lWhat is the name of the input file? : input
+a|      0.5
+b|      0.5
+c|      0.5
+a|a     0.2
+a|b     0.2
+a|c     0.2
+b|a     0.2
+b|b     0.2
+b|c     0.2
+c|a     0.2
+c|b     0.2
+c|c     0.2
+a|aa    0.1
+a|ab    0.1
+a|ac    0.1
+a|ba    0.1
+a|bb    0.1
+a|bc    0.1
+a|ca    0.1
+a|cb    0.1
+a|cc    0.1
+b|aa    0.1
+b|ab    0.1
+b|ac    0.1
+b|ba    0.1
+b|bb    0.1
+b|bc    0.1
+b|ca    0.1
+b|cb    0.1
+b|cc    0.1
+c|aa    0.1
+c|ab    0.1
+c|ac    0.1
+c|ba    0.1
+c|bb    0.1
+c|bc    0.1
+c|ca    0.1
+c|cb    0.1
+c|cc    0.1
+
+
+Please enter a word or type quit: abbca
+a|      0.5 * b|a     0.2 * b|ab    0.1 * c|bb    0.1 * a|bc    0.1 = 0.0001
+Please enter a word or type quit: baac
+b|      0.5 * a|b     0.2 * a|ba    0.1 * c|aa    0.1 = 0.001
+Please enter a word or type quit: cab
+c|      0.5 * a|c     0.2 * b|ca    0.1 = 0.01
+Please enter a word or type quit: quit
+]0;penn016@empress:~/CS471Progs/HW7-NLP[?2004h[penn016@empress HW7-NLP]$ exit
+[?2004lexit
+
+Script done on 2024-05-04 23:33:03-07:00 [COMMAND_EXIT_CODE="0"]
