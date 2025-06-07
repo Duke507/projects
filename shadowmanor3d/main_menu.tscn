@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbwhi7phlg0u6"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_emtq1"]
+[ext_resource type="Texture2D" uid="uid://do8bm7bdx0r1" path="res://ShadowManor Background.png" id="2_m8npc"]
+[ext_resource type="AudioStream" uid="uid://mbpaay1gkk56" path="res://marimba_1.wav" id="3_fdlu2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_emtq1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -384.0
+offset_right = 1149.0
+offset_bottom = 640.0
+scale = Vector2(1.00383, 1.11389)
+texture = ExtResource("2_m8npc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fdlu2")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 173.0
+offset_right = 412.0
+offset_bottom = 204.0
+scale = Vector2(2.34048, 3.18743)
+text = "Start Game
+"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 175.0
+offset_right = 625.0
+offset_bottom = 206.0
+rotation = 0.00691268
+scale = Vector2(5.04745, 3.03261)
+text = "Exit"

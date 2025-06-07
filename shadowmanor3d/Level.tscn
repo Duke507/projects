@@ -1,0 +1,154 @@
+[gd_scene load_steps=15 format=3 uid="uid://dt5125abfv0xp"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_cpf81"]
+[ext_resource type="PackedScene" uid="uid://bmn6ogia7uyr5" path="res://table_small.tscn" id="3_2nifc"]
+[ext_resource type="PackedScene" uid="uid://dvasnoq3xq2kp" path="res://wall.tscn" id="3_3ywx5"]
+[ext_resource type="PackedScene" uid="uid://b6148ivv4u148" path="res://wall_corner.tscn" id="4_ofirr"]
+[ext_resource type="PackedScene" uid="uid://byg3oiujdgufv" path="res://chest_gold.tscn" id="4_wkftn"]
+[ext_resource type="PackedScene" uid="uid://c2jxm7ogpsnef" path="res://barrel.tscn" id="5_q4iis"]
+[ext_resource type="PackedScene" uid="uid://c3lucc5hurmlo" path="res://Buildings_assets/torch_lit.gltf" id="6_m3clv"]
+[ext_resource type="PackedScene" uid="uid://dhswkmm6crkpi" path="res://stairs.tscn" id="7_mxnmf"]
+[ext_resource type="PackedScene" uid="uid://6t3aq6qrama0" path="res://Buildings_assets/shelves.gltf" id="9_ofirr"]
+[ext_resource type="PackedScene" uid="uid://ms7g5wnirx08" path="res://Buildings_assets/wall/wall.gltf" id="10_d6u53"]
+[ext_resource type="PackedScene" uid="uid://b3i48t2ho4i64" path="res://player1.tscn" id="11_wldrt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h2m0w"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m1ryw"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="Environment" id="Environment_8ka31"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_cpf81")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0540789, 0.998537, 0, -0.998537, 0.0540789, 0.343779, 0.31701, -0.22125)
+light_color = Color(1, 1, 0.901961, 1)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0.0119599)
+mesh = SubResource("PlaneMesh_h2m0w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_m1ryw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8ka31")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00558686, 0.863227, 9.82684)
+use_collision = true
+size = Vector3(19.9656, 1.74902, 0.352539)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.0059166, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.0059166, 9.92182, 0.905987, -0.00271034)
+use_collision = true
+size = Vector3(19.7542, 1.74902, 0.352539)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.00169291, 0, 0.999999, 0, 0.791839, 0, -0.999999, 0, 0.00169291, 1.34598, 0.896802, -1.57717)
+size = Vector3(8.24323, 2.3501, 0.360443)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.00507895, 0, -0.999967, 0, 0.627008, 0, 0.999967, 0, 0.00507895, -1.13111, 0.888104, 0.0956275)
+size = Vector3(19.5186, 2.74487, 0.360443)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.00537555, 0.999986, 0, -0.999986, 0.00537555, 0, 0, 0, 1, -1.25594, 0.192256, 5.08902)
+operation = 2
+radius = 1.4834
+height = 0.794678
+sides = 16
+
+[node name="wall" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.000680729, 0, 1, 0, 1, 0, -1, 0, -0.000680729, -9.5198, 0.0409158, -5.4597)
+
+[node name="wall2" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.000680729, 0, 1, 0, 1, 0, -1, 0, -0.000680729, -9.5198, 0.0409158, -4.10152)
+
+[node name="wall3" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.000680729, 0, 1, 0, 1, 0, -1, 0, -0.000680729, -9.5198, 0.0409158, -0.114587)
+
+[node name="wall4" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.000680729, 0, 1, 0, 1, 0, -1, 0, -0.000680729, -9.5198, 0.0409158, 3.88883)
+
+[node name="wall5" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.000680729, 0, 1, 0, 1, 0, -1, 0, -0.000680729, -9.5198, 0.0409158, 7.89131)
+
+[node name="StaticBody3D" parent="CSGCombiner3D" instance=ExtResource("4_ofirr")]
+transform = Transform3D(-0.0198256, 0, 0.999803, 0, 1, 0, -0.999803, 0, -0.0198256, -9.51627, 0.0501686, -9.47081)
+
+[node name="wall6" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.999847, 0, 0.0175222, 0, 1, 0, -0.0175222, 0, -0.999847, -5.53689, 0.0409158, -9.42863)
+
+[node name="wall7" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.999847, 0, 0.0175222, 0, 1, 0, -0.0175222, 0, -0.999847, -1.52234, 0.0409158, -9.42863)
+
+[node name="wall8" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.999847, 0, 0.0175222, 0, 1, 0, -0.0175222, 0, -0.999847, 2.47517, 0.0409158, -9.42863)
+
+[node name="wall9" parent="CSGCombiner3D" instance=ExtResource("3_3ywx5")]
+transform = Transform3D(-0.999847, 0, 0.0175222, 0, 1, 0, -0.0175222, 0, -0.999847, 6.44868, 0.0409158, -9.36988)
+
+[node name="StaticBody3D2" parent="CSGCombiner3D" instance=ExtResource("4_ofirr")]
+transform = Transform3D(0.999929, 0, -0.0119552, 0, 1, 0, 0.0119552, 0, 0.999929, 9.58089, 0.0501686, -9.3104)
+
+[node name="table_small" parent="." instance=ExtResource("3_2nifc")]
+transform = Transform3D(0.00328119, 0, -0.999995, 0, 1, 0, 0.999995, 0, 0.00328119, 8.24596, 0.01294, -6.56114)
+
+[node name="chest" parent="." instance=ExtResource("4_wkftn")]
+transform = Transform3D(0.0422069, 0, -0.999109, 0, 1, 0, 0.999109, 0, 0.0422069, 7.97625, 0.030509, -2.71349)
+
+[node name="barrel" parent="." instance=ExtResource("5_q4iis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92835, 0, 0)
+
+[node name="torch_lit2" parent="." instance=ExtResource("6_m3clv")]
+transform = Transform3D(0.896169, -0.443713, 0, 0.443713, 0.896169, 0, 0, 0, 1, 9.55358, 1.36743, -2.177)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("7_mxnmf")]
+transform = Transform3D(-0.00993077, 0, 0.999951, 0, 1, 0, -0.999951, 0, -0.00993077, -0.897488, 0, 8.36366)
+
+[node name="shelves2" parent="." instance=ExtResource("9_ofirr")]
+transform = Transform3D(-0.00719066, 0, -0.999974, 0, 1, 0, 0.999974, 0, -0.00719066, 10, -1.3506, 2.73267)
+
+[node name="wall2" parent="." instance=ExtResource("10_d6u53")]
+transform = Transform3D(-0.0484488, 0, -0.998826, 0, 1, 0, 0.998826, 0, -0.0484488, 4.8253, 0.0879464, 0.806764)
+
+[node name="DeathLabel" type="CanvasLayer" parent="."]
+
+[node name="DLabel" type="Label" parent="DeathLabel"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SettingsMenu" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="SettingsMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(6.14797, 1.28224)
+pivot_offset = Vector2(-0.355519, -8.59211)
+
+[node name="Resume" type="Button" parent="SettingsMenu/Panel"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 31.0
+scale = Vector2(0.387252, 0.505056)
+pivot_offset = Vector2(0.168377, 50.517)
+text = "Resume"
+
+[node name="ExitGame" type="Button" parent="SettingsMenu/Panel"]
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 31.0
+scale = Vector2(1.07511, 0.714575)
+pivot_offset = Vector2(9.28014, 10.1069)
+text = "Exit"
+
+[node name="Player" parent="." instance=ExtResource("11_wldrt")]
